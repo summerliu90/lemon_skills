@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: 智汇ERP V3.5 认证接口示例
+  version: 3.5.0-demo
+  description: 用于验证 Lemon 接口资料输入。HTTP 200 不等于业务成功，客户端必须继续判断 msgTip。
+servers:
+  - url: /jshERP-boot
+paths:
+  /user/login:
+    post:
+      summary: 用户登录
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: HTTP请求成功；业务结果由msgTip决定
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+  /user/registerUser:
+    post:
+      summary: 注册租户用户
+      responses:
+        '200':
+          description: 用户名重复时业务码为500003
+  /user/randomImage:
+    get:
+      summary: 获取4位验证码
+      description: 字符为数字或小写字母；2分钟有效；校验不区分大小写；提交即消费；刷新不立即删除旧码。源码中的通用测试分支需要整改。
+      responses:
+        '200':
+          description: 返回验证码图片及关联标识
+  /user/logout:
+    post:
+      summary: 退出当前会话
+      responses:
+        '200':
+          description: 只清除当前设备的当前会话
+components:
+  schemas:
+    LoginRequest:
+      type: object
+      required: [username, password, captcha]
+      properties:
+        username:
+          type: string
+          description: 登录仅要求必填；大小写敏感性待确认
+        password:
+          type: string
+          format: password
+          description: 登录仅要求必填，区分大小写
+        captcha:
+          type: string
+          minLength: 4
+          maxLength: 4
+          pattern: '^[0-9a-zA-Z]{4}$'
+          description: 服务端校验不区分大小写
+    LoginResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        msgTip:
+          type: string
+          description: 登录业务结果的必要判断字段
+        token:
+          type: string
+          description: 前端缓存7天；服务端会话3天且访问续期
+    ErrorCodes:
+      type: string
+      enum: ['500003', '500010', '500011', '500012']
+      description: 500003用户名重复；500010验证码错误；500011验证码失效；500012验证码为空

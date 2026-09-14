@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>智汇ERP V3.5 登录原型</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#f7faff,#dceaff);font-family:Arial,"Microsoft YaHei",sans-serif;color:#555}.card{width:560px;padding:72px 48px 64px;background:#fff;border-radius:14px;box-shadow:0 6px 20px #2744692b}.brand{text-align:center;font-size:50px;font-weight:700;color:#626262;margin-bottom:62px}.brand small{font-size:24px;font-weight:400;margin-left:14px}.field{width:100%;height:64px;border:1px solid #ccc;border-radius:6px;margin-bottom:28px;padding:0 20px;font-size:24px}.captcha{display:grid;grid-template-columns:1fr 180px;gap:18px}.captcha-box{height:64px;display:grid;place-items:center;background:#f4f4f4;font-size:34px;font-weight:700;letter-spacing:12px;color:#111;cursor:pointer;user-select:none}.actions{display:flex;justify-content:space-between;align-items:center;margin:20px 0 44px;font-size:20px}.actions a{color:#1684ee;text-decoration:none;font-weight:700}.login{width:100%;height:64px;border:0;border-radius:6px;background:#168cf1;color:#fff;font-size:26px;cursor:pointer}.note{margin-top:22px;min-height:24px;text-align:center;color:#b42318;font-size:14px}
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="登录表单">
+    <div class="brand">智汇ERP <small>V3.5</small></div>
+    <input id="username" class="field" placeholder="请输入用户名" aria-label="用户名">
+    <input id="password" class="field" type="password" placeholder="请输入密码" aria-label="密码">
+    <div class="captcha"><input id="captcha" class="field" placeholder="请输入验证码" aria-label="验证码"><div id="captchaImage" class="captcha-box" title="点击刷新">d9ph</div></div>
+    <div class="actions"><label><input id="remember" type="checkbox"> 记住密码</label><a href="#register" id="register">注册租户</a></div>
+    <button class="login" id="login">登 录</button>
+    <div class="note" id="message"></div>
+  </main>
+  <script>
+    const alphabet="0123456789abcdefghijklmnopqrstuvwxyz";
+    const image=document.querySelector("#captchaImage"),message=document.querySelector("#message");
+    image.addEventListener("click",()=>{image.textContent=Array.from({length:4},()=>alphabet[Math.floor(Math.random()*alphabet.length)]).join("");message.textContent="验证码已刷新；旧验证码的服务端生命周期以需求规则为准。"});
+    document.querySelector("#login").addEventListener("click",()=>{const missing=["username","password","captcha"].filter(id=>!document.querySelector(`#${id}`).value);message.textContent=missing.length?"用户名、密码和验证码均为必填项。":"原型仅演示交互：真实结果需要调用 /jshERP-boot/user/login 并判断 msgTip。"});
+  </script>
+</body>
+</html>

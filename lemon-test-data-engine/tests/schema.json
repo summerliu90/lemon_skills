@@ -1,0 +1,13 @@
+{
+  "user_id": {"template": "U{seq:5}", "unique": true},
+  "city": "{choice:北京市,上海市,广州市,杭州市,成都市}",
+  "id_card": "{idcard:city}",
+  "user_ref": "{ref:user_id}",
+  "phone": "{phone}",
+  "email": "{email}",
+  "name": "{name}",
+  "status": {
+    "template": "{choice:ACTIVE,INACTIVE}",
+    "scenarios": {"expired": "EXPIRED", "normal": "ACTIVE"}
+  }
+}

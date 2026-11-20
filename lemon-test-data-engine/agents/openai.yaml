@@ -1,0 +1,7 @@
+interface:
+  display_name: "Lemon Test Data Engine"
+  short_description: "Learn, validate, and generate test data"
+  brand_color: "#F59E0B"
+  default_prompt: "Use $lemon-test-data-engine to learn a rule from these samples and generate validated test data."
+policy:
+  allow_implicit_invocation: true

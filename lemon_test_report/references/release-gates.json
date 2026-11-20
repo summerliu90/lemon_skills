@@ -1,0 +1,7 @@
+{
+  "pass_rate_min": 95,
+  "p0_max": 0,
+  "p1_max": 0,
+  "allow_unknown_status": false,
+  "require_evidence_for_go": true
+}

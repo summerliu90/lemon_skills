@@ -1,0 +1,6 @@
+{
+  "kind": "output",
+  "required_document_fields": ["schema_version", "testcases"],
+  "required_source_fields": ["source_id", "source_type", "locator"],
+  "severity_policy": {"missing_required": "error", "weak_assertion": "warning", "missing_coverage": "warning", "unknown_fact": "warning"}
+}

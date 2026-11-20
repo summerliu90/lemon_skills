@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "name": "api",
+  "inherits": "default",
+  "columns": [
+    {"key": "case_id", "label": "用例编号", "required": true},
+    {"key": "name", "label": "用例标题", "required": true},
+    {"key": "area", "label": "接口模块", "required": true},
+    {"key": "flow_type", "label": "流程类型", "required": true},
+    {"key": "test_method", "label": "测试方法", "required": true},
+    {"key": "method", "label": "请求方法", "required": true},
+    {"key": "path", "label": "请求路径", "required": true},
+    {"key": "priority", "label": "优先级", "required": true},
+    {"key": "preconditions", "label": "前置条件", "required": true},
+    {"key": "actions", "label": "测试步骤", "required": true},
+    {"key": "data", "label": "测试数据", "required": true},
+    {"key": "assertions", "label": "预期结果", "required": true},
+    {"key": "actual_result", "label": "实际结果", "required": false},
+    {"key": "expected_status", "label": "预期状态码", "required": false},
+    {"key": "notes", "label": "备注", "required": false}
+  ]
+}

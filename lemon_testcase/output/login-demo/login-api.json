@@ -1,0 +1,343 @@
+{
+  "schema_version": "1.0",
+  "project": "Lemon Portal Authentication Demo",
+  "source": {
+    "kind": "openapi",
+    "files": []
+  },
+  "assumptions": [],
+  "testcases": [
+    {
+      "case_id": "DL_001",
+      "name": "用户登录",
+      "area": "Authentication",
+      "kind": "api",
+      "flow_type": "正常流程",
+      "test_method": "正向验证",
+      "priority": "P0",
+      "preconditions": [
+        "服务可访问",
+        "测试凭证和数据已准备（如适用）"
+      ],
+      "actions": [
+        "构造 POST /auth/login 请求",
+        "填写测试数据",
+        "发送请求"
+      ],
+      "assertions": [
+        "HTTP 状态码属于 [200]",
+        "响应满足接口定义的字段和类型约束"
+      ],
+      "data": {
+        "body": {
+          "email": "demo.user@example.test",
+          "password": "${DEMO_PASSWORD}",
+          "rememberMe": false,
+          "captcha": "sample"
+        }
+      },
+      "source_refs": [
+        "POST /auth/login",
+        "type=object"
+      ],
+      "tags": [
+        "positive",
+        "valid"
+      ],
+      "notes": [],
+      "automation_candidate": true,
+      "method": "POST",
+      "path": "/auth/login",
+      "expected_status": [
+        200
+      ]
+    },
+    {
+      "case_id": "DL_002",
+      "name": "用户登录",
+      "area": "Authentication",
+      "kind": "api",
+      "flow_type": "正常流程",
+      "test_method": "边界值",
+      "priority": "P1",
+      "preconditions": [
+        "服务可访问",
+        "测试凭证和数据已准备（如适用）"
+      ],
+      "actions": [
+        "构造 POST /auth/login 请求",
+        "填写测试数据",
+        "发送请求"
+      ],
+      "assertions": [
+        "HTTP 状态码属于 [400, 401, 423, 429]",
+        "错误响应不应泄漏敏感信息"
+      ],
+      "data": {
+        "body": {
+          "email": "demo.user@example.test",
+          "password": "${DEMO_PASSWORD}",
+          "rememberMe": false,
+          "captcha": "sample"
+        }
+      },
+      "source_refs": [
+        "POST /auth/login",
+        "type=object"
+      ],
+      "tags": [
+        "negative",
+        "boundary"
+      ],
+      "notes": [],
+      "automation_candidate": true,
+      "method": "POST",
+      "path": "/auth/login",
+      "expected_status": [
+        400,
+        401,
+        423,
+        429
+      ]
+    },
+    {
+      "case_id": "DL_003",
+      "name": "用户登录",
+      "area": "Authentication",
+      "kind": "api",
+      "flow_type": "异常流程",
+      "test_method": "非法输入",
+      "priority": "P1",
+      "preconditions": [
+        "服务可访问",
+        "测试凭证和数据已准备（如适用）"
+      ],
+      "actions": [
+        "构造 POST /auth/login 请求",
+        "填写测试数据",
+        "发送请求"
+      ],
+      "assertions": [
+        "HTTP 状态码属于 [400, 401, 423, 429]",
+        "错误响应不应泄漏敏感信息"
+      ],
+      "data": {
+        "body": {
+          "password": "${DEMO_PASSWORD}",
+          "rememberMe": false,
+          "captcha": "sample"
+        }
+      },
+      "source_refs": [
+        "POST /auth/login",
+        "type=object"
+      ],
+      "tags": [
+        "negative",
+        "missing"
+      ],
+      "notes": [],
+      "automation_candidate": true,
+      "method": "POST",
+      "path": "/auth/login",
+      "expected_status": [
+        400,
+        401,
+        423,
+        429
+      ]
+    },
+    {
+      "case_id": "DL_004",
+      "name": "用户登录",
+      "area": "Authentication",
+      "kind": "api",
+      "flow_type": "异常流程",
+      "test_method": "非法输入",
+      "priority": "P1",
+      "preconditions": [
+        "服务可访问",
+        "测试凭证和数据已准备（如适用）"
+      ],
+      "actions": [
+        "构造 POST /auth/login 请求",
+        "填写测试数据",
+        "发送请求"
+      ],
+      "assertions": [
+        "HTTP 状态码属于 [400, 401, 423, 429]",
+        "错误响应不应泄漏敏感信息"
+      ],
+      "data": {
+        "body": {
+          "email": "demo.user@example.test",
+          "password": "${DEMO_PASSWORD}",
+          "rememberMe": false,
+          "captcha": ""
+        }
+      },
+      "source_refs": [
+        "POST /auth/login",
+        "type=object"
+      ],
+      "tags": [
+        "negative",
+        "empty"
+      ],
+      "notes": [],
+      "automation_candidate": true,
+      "method": "POST",
+      "path": "/auth/login",
+      "expected_status": [
+        400,
+        401,
+        423,
+        429
+      ]
+    },
+    {
+      "case_id": "DL_005",
+      "name": "用户登录",
+      "area": "Authentication",
+      "kind": "api",
+      "flow_type": "异常流程",
+      "test_method": "非法输入",
+      "priority": "P1",
+      "preconditions": [
+        "服务可访问",
+        "测试凭证和数据已准备（如适用）"
+      ],
+      "actions": [
+        "构造 POST /auth/login 请求",
+        "填写测试数据",
+        "发送请求"
+      ],
+      "assertions": [
+        "HTTP 状态码属于 [400, 401, 423, 429]",
+        "错误响应不应泄漏敏感信息"
+      ],
+      "data": {
+        "body": {
+          "email": "demo.user@example.test",
+          "password": "${DEMO_PASSWORD}",
+          "rememberMe": false,
+          "captcha": "sample"
+        }
+      },
+      "source_refs": [
+        "POST /auth/login",
+        "type=object"
+      ],
+      "tags": [
+        "negative",
+        "wrong_type"
+      ],
+      "notes": [],
+      "automation_candidate": true,
+      "method": "POST",
+      "path": "/auth/login",
+      "expected_status": [
+        400,
+        401,
+        423,
+        429
+      ]
+    },
+    {
+      "case_id": "DL_006",
+      "name": "用户登录",
+      "area": "Authentication",
+      "kind": "api",
+      "flow_type": "异常流程",
+      "test_method": "非法输入",
+      "priority": "P1",
+      "preconditions": [
+        "服务可访问",
+        "测试凭证和数据已准备（如适用）"
+      ],
+      "actions": [
+        "构造 POST /auth/login 请求",
+        "填写测试数据",
+        "发送请求"
+      ],
+      "assertions": [
+        "HTTP 状态码属于 [400, 401, 423, 429]",
+        "错误响应不应泄漏敏感信息"
+      ],
+      "data": {
+        "body": {
+          "email": "demo.user@example.test",
+          "password": "${DEMO_PASSWORD}",
+          "rememberMe": false,
+          "captcha": "sample"
+        }
+      },
+      "source_refs": [
+        "POST /auth/login",
+        "type=object"
+      ],
+      "tags": [
+        "negative",
+        "auth"
+      ],
+      "notes": [],
+      "automation_candidate": true,
+      "method": "POST",
+      "path": "/auth/login",
+      "expected_status": [
+        400,
+        401,
+        423,
+        429
+      ]
+    },
+    {
+      "case_id": "DL_007",
+      "name": "用户登录",
+      "area": "Authentication",
+      "kind": "api",
+      "flow_type": "异常流程",
+      "test_method": "非法输入",
+      "priority": "P1",
+      "preconditions": [
+        "服务可访问",
+        "测试凭证和数据已准备（如适用）"
+      ],
+      "actions": [
+        "构造 POST /auth/login 请求",
+        "填写测试数据",
+        "发送请求"
+      ],
+      "assertions": [
+        "HTTP 状态码属于 [400, 401, 423, 429]",
+        "错误响应不应泄漏敏感信息"
+      ],
+      "data": {
+        "body": {
+          "email": "demo.user@example.test",
+          "password": "${DEMO_PASSWORD}",
+          "rememberMe": false,
+          "captcha": "sample"
+        }
+      },
+      "source_refs": [
+        "POST /auth/login",
+        "type=object"
+      ],
+      "tags": [
+        "negative",
+        "negative"
+      ],
+      "notes": [],
+      "automation_candidate": true,
+      "method": "POST",
+      "path": "/auth/login",
+      "expected_status": [
+        400,
+        401,
+        423,
+        429
+      ]
+    }
+  ]
+}

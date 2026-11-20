@@ -1,0 +1,8 @@
+{
+  "kind": "functional",
+  "label": "功能测试",
+  "required_case_fields": ["case_id", "name", "area", "flow_type", "test_method", "priority", "preconditions", "actions", "assertions", "source_refs"],
+  "required_tags_any": ["positive", "negative", "boundary", "state", "permission", "recovery", "scenario"],
+  "assertion_patterns": ["结果", "显示", "进入", "拒绝", "提示", "保存", "状态", "跳转", "返回"],
+  "quality_notes": ["每个动作必须能被执行", "预期必须描述可观察结果", "来源必须能定位到需求事实"]
+}

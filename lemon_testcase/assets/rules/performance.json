@@ -1,0 +1,8 @@
+{
+  "kind": "performance",
+  "label": "性能测试",
+  "required_case_fields": ["case_id", "name", "area", "flow_type", "test_method", "priority", "preconditions", "actions", "assertions", "source_refs"],
+  "required_tags_any": ["baseline", "ramp", "peak", "soak", "spike", "degradation", "recovery"],
+  "assertion_patterns": ["采集", "指标", "趋势", "错误率", "吞吐", "延迟", "恢复", "不虚构"],
+  "quality_notes": ["没有 SLA 时只定义观测项，不虚构阈值", "必须记录负载模型、环境和采集指标"]
+}

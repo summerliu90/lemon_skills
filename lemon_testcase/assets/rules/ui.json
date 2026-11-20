@@ -1,0 +1,8 @@
+{
+  "kind": "ui",
+  "label": "UI 测试",
+  "required_case_fields": ["case_id", "name", "area", "flow_type", "test_method", "priority", "preconditions", "actions", "assertions", "source_refs"],
+  "required_tags_any": ["layout", "interaction", "responsive", "accessibility", "loading", "empty", "error", "disabled", "permission"],
+  "assertion_patterns": ["显示", "可见", "不可用", "聚焦", "提示", "布局", "适配", "点击", "键盘"],
+  "quality_notes": ["截图只能证明视觉事实，不能替代交互验证", "预期应写明元素、状态和观察方式"]
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "project": "Lemon Portal 登录",
+  "source": {"kind": "mixed", "files": ["login-prd.md", "login-openapi.yaml", "login-page.png"]},
+  "assumptions": [],
+  "testcases": [
+    {"case_id":"LM-DEMO-001","name":"正确凭证登录","area":"登录","kind":"functional","priority":"P0","preconditions":["用户已注册","服务可用"],"actions":["输入 demo.user@example.test","输入演示密码变量","点击登录"],"assertions":["进入工作台","创建会话","不在页面显示密码"],"data":{"email":"demo.user@example.test","password":"${DEMO_PASSWORD}"},"source_refs":["login-prd.md#主流程"],"tags":["positive","auth"],"notes":[],"automation_candidate":true},
+    {"case_id":"LM-DEMO-002","name":"错误密码被拒绝","area":"登录","kind":"functional","priority":"P1","preconditions":["用户已注册"],"actions":["输入正确邮箱","输入错误密码","点击登录"],"assertions":["显示统一认证失败提示","不创建会话","不泄露账号是否存在"],"data":{"email":"demo.user@example.test","password":"wrong-demo-password"},"source_refs":["login-prd.md#异常规则"],"tags":["negative","security"],"notes":[],"automation_candidate":true}
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: Lemon Testcase
+  short_description: Generate and validate structured test cases from requirements and API specifications.
+  default_prompt: Use $lemon_testcase to turn the supplied requirements or API specification into reviewable test cases with coverage notes and the requested export format.

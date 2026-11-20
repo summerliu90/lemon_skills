@@ -1,0 +1,9 @@
+{
+  "kind": "api",
+  "label": "接口测试",
+  "required_case_fields": ["case_id", "name", "area", "flow_type", "test_method", "priority", "preconditions", "actions", "assertions", "source_refs", "method", "path"],
+  "required_tags_any": ["positive", "negative", "boundary", "auth", "schema", "status", "dependency"],
+  "assertion_patterns": ["status", "响应", "response", "字段", "schema", "错误", "鉴权", "返回"],
+  "parameter_dimensions": ["path", "query", "header", "body", "auth"],
+  "quality_notes": ["必须覆盖请求构造和响应验证", "未知状态码不能凭空补写", "参数规则以接口契约或需求来源为准"]
+}

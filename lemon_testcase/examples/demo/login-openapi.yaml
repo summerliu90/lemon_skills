@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: Lemon Portal Authentication Demo
+  version: 1.0.0
+servers:
+  - url: https://demo.invalid/api
+paths:
+  /auth/login:
+    post:
+      operationId: login
+      summary: 用户登录
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Login succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Authentication failed
+        '423':
+          description: Account locked
+        '429':
+          description: Too many attempts
+components:
+  schemas:
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 6
+          maxLength: 128
+          example: demo.user@example.test
+        password:
+          type: string
+          format: password
+          minLength: 8
+          maxLength: 64
+          example: '${DEMO_PASSWORD}'
+        rememberMe:
+          type: boolean
+          default: false
+        captcha:
+          type: string
+          minLength: 4
+          maxLength: 8
+    LoginResponse:
+      type: object
+      required: [accessToken, expiresIn, user]
+      properties:
+        accessToken:
+          type: string
+          example: '${ACCESS_TOKEN}'
+        expiresIn:
+          type: integer
+          minimum: 60
+        user:
+          type: object
+          required: [id, email]
+          properties:
+            id:
+              type: string
+            email:
+              type: string
+              format: email

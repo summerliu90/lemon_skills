@@ -1,0 +1,8 @@
+{
+  "kind": "automation",
+  "label": "自动化候选",
+  "required_case_fields": ["case_id", "name", "area", "flow_type", "test_method", "priority", "preconditions", "actions", "assertions", "source_refs", "automation_candidate"],
+  "required_tags_any": ["stable", "fixture", "isolation", "assertion", "maintenance"],
+  "assertion_patterns": ["断言", "可重复", "隔离", "数据", "清理", "稳定"],
+  "quality_notes": ["候选判定要说明稳定性、数据隔离和维护成本", "自动化不等于适合自动化"]
+}

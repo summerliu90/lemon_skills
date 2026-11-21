@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "bug": {"bug_id": "EX-DATA-001", "title": "支付成功但库存未扣减", "actual": "订单为已支付，库存仍为原值", "expected": "支付确认与库存扣减最终一致", "steps": ["提交订单", "完成支付", "查询库存"], "environment": "production", "version": "order-3.8.0", "report_source": "monitor"},
+  "evidence": [{"evidence_id": "E-001", "kind": "api", "content": "支付回调返回成功", "source": "payment callback log", "fact_level": "observed", "reliability": "high", "supports": ["H-001"]}],
+  "hypotheses": [{"hypothesis_id": "H-001", "claim": "支付回调后的异步扣库存消息投递失败且没有补偿", "scope": "dependency", "status": "candidate", "supporting_evidence": ["E-001"], "verification_plan": ["检查消息生产、消费、重试和库存变更记录"]}],
+  "audit": {"readiness": "READY"}
+}

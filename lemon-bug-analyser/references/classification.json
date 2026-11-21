@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "domains": {
+    "functional": ["rule", "workflow", "state-transition", "validation", "permission"],
+    "api": ["contract", "parameter", "status-code", "timeout", "retry", "idempotency", "auth"],
+    "frontend": ["rendering", "state-management", "resource-loading", "browser", "cache", "accessibility"],
+    "performance": ["latency", "throughput", "database", "cache", "connection-pool", "gc", "lock"],
+    "data-consistency": ["transaction", "async-message", "concurrency", "replay", "compensation", "duplicate"],
+    "security": ["authentication", "authorization", "injection", "secret-exposure", "privacy", "audit"],
+    "compatibility": ["browser", "device", "os", "api-version", "feature-flag", "deployment"],
+    "ai": ["prompt", "context", "retrieval", "tool-call", "model-version", "quota", "safety"],
+    "release": ["regression", "migration", "configuration", "rollback", "dependency"],
+    "test-infrastructure": ["fixture", "mock", "flaky", "environment", "data-seed", "assertion"]
+  },
+  "severity": {
+    "S0": {"meaning": "core service unavailable or irreversible data/security impact", "requires": ["immediate mitigation", "incident owner", "post-fix observation"]},
+    "S1": {"meaning": "critical business path materially broken", "requires": ["workaround assessment", "same-day diagnosis"]},
+    "S2": {"meaning": "limited function or users affected", "requires": ["planned fix", "targeted regression"]},
+    "S3": {"meaning": "minor experience or cosmetic issue", "requires": ["normal prioritization"]}
+  },
+  "priority": {
+    "P0": "interrupt current work; customer or data risk",
+    "P1": "fix in current delivery window",
+    "P2": "schedule with normal capacity",
+    "P3": "defer or bundle with related work"
+  },
+  "confidence": {
+    "confirmed": {"min_current_evidence": 2, "requires_verification": true},
+    "probable": {"min_current_evidence": 1, "requires_verification": true},
+    "pending": {"min_current_evidence": 0, "requires_verification": false},
+    "blocked": {"min_current_evidence": 0, "requires_external_input": true}
+  },
+  "history_match_weights": {
+    "module": 0.24,
+    "business_flow": 0.20,
+    "api_signatures": 0.22,
+    "conditions": 0.16,
+    "environment": 0.08,
+    "version_range": 0.05,
+    "symptoms": 0.05
+  }
+}

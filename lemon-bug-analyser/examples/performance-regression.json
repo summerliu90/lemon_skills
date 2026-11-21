@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "bug": {"bug_id": "EX-PERF-001", "title": "搜索接口发布后 P99 从 800ms 升到 6s", "actual": "高峰期搜索超时", "expected": "P99 小于 1s", "steps": ["使用高峰流量模型执行搜索"], "environment": "production", "version": "search-2.1.0", "report_source": "monitor"},
+  "evidence": [{"evidence_id": "E-001", "kind": "metric", "content": "发布后 P99=6000ms，错误率同步上升", "source": "APM dashboard", "fact_level": "observed", "reliability": "high", "supports": ["H-001"]}],
+  "hypotheses": [{"hypothesis_id": "H-001", "claim": "新查询计划导致数据库慢查询并占满连接池", "scope": "data", "status": "candidate", "supporting_evidence": ["E-001"], "verification_plan": ["对比发布前后 EXPLAIN、慢查询和连接池等待"]}],
+  "audit": {"readiness": "READY"}
+}

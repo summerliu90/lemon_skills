@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "bug": {"bug_id": "EX-AI-001", "title": "多轮对话后模型忽略已确认的用户约束", "actual": "第六轮回答违反第二轮确认的城市条件", "expected": "模型保留并遵循有效上下文中的约束", "steps": ["发送约束", "连续追问五轮", "要求生成结果"], "environment": "staging", "version": "assistant-2026.11.20", "report_source": "testpilot"},
+  "evidence": [{"evidence_id": "E-001", "kind": "test-assertion", "content": "相同输入在第六轮出现不一致约束", "source": "TestPilot run TP-RUN-11", "fact_level": "observed", "reliability": "high", "supports": ["H-001"]}],
+  "hypotheses": [{"hypothesis_id": "H-001", "claim": "上下文裁剪丢失了早期约束", "scope": "api", "status": "candidate", "supporting_evidence": ["E-001"], "verification_plan": ["V-001"]}],
+  "audit": {"readiness": "READY"}
+}

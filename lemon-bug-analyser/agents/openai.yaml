@@ -1,0 +1,4 @@
+interface:
+  display_name: Lemon Bug Analyser
+  short_description: Evidence-driven Bug root-cause analysis with TestPilot history
+  default_prompt: Analyze the supplied Bug evidence, review relevant historical cases, and produce a verified diagnosis with validation and regression gates.

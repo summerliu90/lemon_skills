@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "bug": {"bug_id": "EX-UI-001", "title": "Safari 打开订单页白屏", "actual": "页面无内容且 Console 抛出运行时错误", "expected": "订单页展示加载状态或订单内容", "steps": ["登录", "打开订单页"], "environment": "staging", "version": "web-5.4.2", "report_source": "test-run"},
+  "evidence": [{"evidence_id": "E-001", "kind": "screenshot", "content": "Safari 页面白屏", "source": "TestPilot screenshot", "fact_level": "observed", "reliability": "medium"}],
+  "hypotheses": [{"hypothesis_id": "H-001", "claim": "Safari 不支持当前构建使用的 API", "scope": "environment", "status": "candidate", "supporting_evidence": ["E-001"], "verification_plan": ["在 Chrome 与 Safari 对比 Console 和资源加载结果"]}],
+  "audit": {"readiness": "READY"}
+}

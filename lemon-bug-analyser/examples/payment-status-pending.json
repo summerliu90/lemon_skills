@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "bug": {
+    "bug_id": "DEMO-PAY-001",
+    "title": "支付成功后订单仍显示待支付",
+    "description": "商城项目支付回调后订单状态没有同步",
+    "actual": "订单状态仍然是待支付",
+    "expected": "订单状态应该变成已支付",
+    "steps": ["创建订单", "完成支付", "等待支付回调", "查询订单详情"],
+    "project": "商城项目",
+    "module": "电商平台 / 支付中心 / 支付回调",
+    "business_flow": "支付成功回调更新订单状态",
+    "environment": "staging",
+    "version": "v2.8.3",
+    "occurred_at": "2026-09-10T10:20:00+08:00",
+    "frequency": "unknown",
+    "report_source": "manual"
+  },
+  "evidence": [
+    {"evidence_id":"E-001","kind":"log","content":"Lock wait timeout","source":"traceId=demo-1024","locator":"2026-09-10 10:20:00-10:25:00","fact_level":"observed","reliability":"high","entities":["payment-callback","orders"]},
+    {"evidence_id":"E-002","kind":"api","content":"订单查询返回待支付","source":"SELECT orders by order_id","locator":"demo-order-1024","fact_level":"observed","reliability":"high","entities":["orders","demo-order-1024"]}
+  ],
+  "hypotheses": [
+    {"hypothesis_id":"H-001","claim":"支付回调更新订单时发生锁等待超时，事务回滚","scope":"data","status":"candidate","supporting_evidence":["E-001","E-002"],"verification_plan":["V-001"]},
+    {"hypothesis_id":"H-002","claim":"回调更新条件未命中，实际影响行数为 0","scope":"api","status":"candidate","supporting_evidence":[],"verification_plan":["V-002"]}
+  ],
+  "audit": {"readiness":"READY","knowledge_status":"to-be-retrieved"}
+}
